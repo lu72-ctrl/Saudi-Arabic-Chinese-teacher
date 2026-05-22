@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沙特中文教师20天备考打卡</title>
+<style>
+:root {
+  --p1: #0F6E56; --p1-bg: #E1F5EE; --p1-light: #9FE1CB;
+  --p2: #534AB7; --p2-bg: #EEEDFE; --p2-light: #CECBF6;
+  --p3: #D85A30; --p3-bg: #FAECE7; --p3-light: #F5C4B3;
+  --p4: #BA7517; --p4-bg: #FAEEDA; --p4-light: #FAC775;
+  --red: #E24B4A;
+  --t1: #2C2C2A; --t2: #5F5E5A; --t3: #888780;
+  --bd: #D3D1C7; --bg: #f5f3ee;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;padding:16px}
+.C{max-width:960px;margin:0 auto}
+
+/* Header */
+.hdr{text-align:center;padding:24px 20px;background:#fff;border-radius:16px;margin-bottom:20px;border:1px solid var(--bd)}
+.hdr h1{font-size:24px;font-weight:700;margin-bottom:4px}
+.hdr .sub{color:var(--t2);font-size:13px}
+.exam{display:inline-flex;align-items:center;gap:10px;background:#FCEBEB;border:1px solid var(--red);border-radius:10px;padding:7px 18px;margin-top:12px;font-weight:600;color:#791F1F;font-size:13px}
+.exam b{background:var(--red);color:#fff;padding:3px 10px;border-radius:6px;font-size:12px}
+.routine-banner{background:linear-gradient(135deg,#FFF9E6,#FFF3CC);border:1px solid #E8D87C;border-radius:10px;padding:12px 18px;margin-top:14px;text-align:left}
+.routine-banner h3{font-size:13px;font-weight:700;color:#8B7D3C;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.routine-banner ul{font-size:12px;color:var(--t2);padding-left:18px;line-height:1.7}
+.routine-banner li strong{color:var(--t1)}
+
+/* Top Progress Ring */
+.ring-wrap{display:flex;justify-content:center;margin-bottom:20px}
+.ring-box{position:relative;width:200px;height:200px}
+.ring-box svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring-ctr{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.ring-ctr .num{font-size:36px;font-weight:800;color:var(--p1);line-height:1}
+.ring-ctr .lbl{font-size:11px;color:var(--t2);margin-top:2px}
+.ring-ctr .dt{font-size:10px;color:var(--t3);margin-top:2px}
+
+/* Phase Legend */
+.pleg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:660px;margin:0 auto 20px}
+.pleg-i{display:flex;align-items:center;gap:5px;padding:7px 8px;border-radius:8px;font-size:11px;font-weight:500}
+.pleg-d{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* Phase Header */
+.ph-h{text-align:center;padding:12px;margin:20px 0 12px;border-radius:10px;font-size:15px;font-weight:700;grid-column:1/-1}
+
+/* Day Card Grid */
+.dg{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:20px}
+.dc{background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--bd);transition:box-shadow .15s}
+.dc:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
+
+/* Card header */
+.dc-h{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;color:#fff;font-weight:600;position:relative}
+.dc-h .dn{font-size:16px;font-weight:700}
+.dc-h .dd{font-size:12px;opacity:.9;margin-left:8px}
+.dc-h .pt{font-size:10px;padding:2px 8px;border-radius:8px;background:rgba(255,255,255,.22)}
+
+/* Mini progress ring in header */
+.mini-ring{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:34px;height:34px}
+.mini-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.mini-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff}
+
+/* Card body */
+.dc-b{padding:14px}
+.dc-b>h4{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.dc-b>h4 .edit-btn{cursor:pointer;font-size:14px;opacity:.4;transition:opacity .15s;border:none;background:none;color:var(--t2);padding:0 2px}
+.dc-b>h4 .edit-btn:hover{opacity:1}
+.dc-b>h4 .edit-btn.active{opacity:1;color:var(--p1)}
+
+/* Sub-sections within card */
+.sub{margin-bottom:12px}
+.sub:last-child{margin-bottom:0}
+.sub-h{font-size:11px;font-weight:700;letter-spacing:.3px;margin-bottom:5px;display:flex;align-items:center;gap:5px;padding:4px 8px;border-radius:5px}
+.sub-h.routine{background:#FFF9E6;color:#8B7D3C;border:1px solid #EDE3A8}
+.sub-h.focus{background:var(--p1-bg);color:var(--p1);border:1px solid var(--p1-light)}
+.sub-h.focus.p2{background:var(--p2-bg);color:var(--p2);border:1px solid var(--p2-light)}
+.sub-h.focus.p3{background:var(--p3-bg);color:var(--p3);border:1px solid var(--p3-light)}
+.sub-h.focus.p4{background:var(--p4-bg);color:var(--p4);border:1px solid var(--p4-light)}
+.sub-h.template{background:#F0F7FF;color:#2B6CB0;border:1px solid #BEE3F8}
+.sub-h.review{background:#FFF0F0;color:#C53030;border:1px solid #FED7D7}
+.sub-h.sim{background:var(--p3-bg);color:var(--p3);border:1px solid var(--p3-light)}
+
+/* Task items with checkboxes */
+.tl{list-style:none}
+.tl li{display:flex;align-items:flex-start;gap:7px;padding:4px 0;font-size:12.5px;color:var(--t2);line-height:1.5;cursor:pointer;transition:color .15s}
+.tl li:hover{color:var(--t1)}
+.tl li .ck{width:15px;height:15px;border:1.5px solid #ccc;border-radius:3px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;transition:all .15s;cursor:pointer}
+.tl li.done .ck{background:var(--p1);border-color:var(--p1)}
+.tl li.done .tx{text-decoration:line-through;color:var(--t3)}
+
+/* Edit mode */
+.dc.editing .tl li .tx{outline:none;border-bottom:1px dashed var(--bd)}
+.dc.editing .tl li .tx[contenteditable=true]{border-bottom-color:var(--p1);background:#fafafa;padding:1px 4px;border-radius:3px}
+.add-task{display:none;margin-top:6px;padding:4px 10px;border:1.5px dashed var(--bd);border-radius:6px;background:transparent;cursor:pointer;font-size:12px;color:var(--t3);width:100%;text-align:center;transition:all .15s}
+.add-task:hover{border-color:var(--p1);color:var(--p1)}
+.dc.editing .add-task{display:block}
+
+/* Save indicator */
+.save-bar{display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 0;margin-bottom:8px;font-size:11px;color:var(--t3)}
+.save-bar .sv-status{padding:3px 10px;border-radius:6px;font-weight:500;transition:all .3s}
+.save-bar .sv-status.ok{background:#E1F5EE;color:var(--p1)}
+.save-bar .sv-status.fail{background:#FFF0F0;color:#C53030}
+.save-bar button{padding:3px 10px;border:1px solid var(--bd);border-radius:6px;background:#fff;cursor:pointer;font-size:11px;color:var(--t2);transition:all .15s}
+.save-bar button:hover{border-color:var(--p1);color:var(--p1)}
+
+/* Card footer */
+.dc-f{display:flex;gap:8px;padding:0 14px 12px}
+.submit-btn{flex:1;padding:6px;border:1.5px solid var(--bd);border-radius:8px;background:transparent;cursor:pointer;font-size:12px;font-weight:500;color:var(--t2);transition:all .15s}
+.submit-btn:hover{border-color:var(--p1);color:var(--p1)}
+.dc.all-done .submit-btn{background:var(--p1);border-color:var(--p1);color:#fff}
+.dc.all-done{border-color:var(--p1-light)}
+
+/* Phase color classes */
+.gp1{background:linear-gradient(135deg,var(--p1),#1D9E75)}
+.gp2{background:linear-gradient(135deg,var(--p2),#7F77DD)}
+.gp3{background:linear-gradient(135deg,var(--p3),#F0997B)}
+.gp4{background:linear-gradient(135deg,var(--p4),#EF9F27)}
+.gph1{background:var(--p1-bg);color:var(--p1);border:1px solid var(--p1)}
+.gph2{background:var(--p2-bg);color:var(--p2);border:1px solid var(--p2)}
+.gph3{background:var(--p3-bg);color:var(--p3);border:1px solid var(--p3)}
+.gph4{background:var(--p4-bg);color:var(--p4);border:1px solid var(--p4)}
+.cp1{color:var(--p1)}.cp2{color:var(--p2)}.cp3{color:var(--p3)}.cp4{color:var(--p4)}
+
+/* Standards / FAQ / Checklist */
+.sec{background:#fff;border-radius:14px;padding:20px;margin-bottom:16px;border:1px solid var(--bd)}
+.sec h2{font-size:17px;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:14px}
+.tbl th,.tbl td{padding:7px 10px;text-align:left;border-bottom:1px solid #eee;font-size:12px}
+.tbl th{background:#f8f7f4;font-weight:600;font-size:12px}
+.faq-i{margin-bottom:8px;border:1px solid #eee;border-radius:8px;overflow:hidden}
+.faq-q{padding:9px 12px;font-weight:600;font-size:12.5px;background:#fafafa;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-a{padding:9px 12px;font-size:12px;color:var(--t2);line-height:1.6}
+.cl-g{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;list-style:none}
+.cl-g li{padding:7px 10px;background:#fafafa;border-radius:6px;font-size:12px;display:flex;align-items:center;gap:7px}
+.clb{width:15px;height:15px;border:1.5px solid #ccc;border-radius:3px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;transition:all .15s}
+.clb.on{background:var(--p1);border-color:var(--p1)}
+.ta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.ta-i{background:#f8f7f4;border-radius:8px;padding:10px;text-align:center}
+.ta-i .tv{font-size:18px;font-weight:700}
+.ta-i .tl2{font-size:10px;color:var(--t3);margin-bottom:2px}
+.ta-i .tw{font-size:10px;color:var(--t2);margin-top:2px}
+.ft{text-align:center;padding:14px;color:#999;font-size:11px}
+.ft strong{color:var(--t1)}
+
+@media(max-width:520px){
+  .pleg{grid-template-columns:repeat(2,1fr)}
+  .cl-g,.ta{grid-template-columns:1fr}
+  .routine-banner ul{font-size:11px}
+}
+</style>
+</head>
+<body>
+<div class="C">
+
+<div class="hdr">
+  <h1>🇸🇦 沙特中文教师 · 20天备考打卡</h1>
+  <div class="sub">语合志愿者 / 公派教师 / 沙特中文教师选拔考试</div>
+  <div class="exam"><b>考试</b>6月13-14日 | 距今仅剩 <span id="cd">22</span> 天</div>
+  <div class="routine-banner">
+    <h3>⏱️ 前10天每日常规打卡（约40-50分钟）</h3>
+    <ul>
+      <li><strong>自我介绍</strong>：中/英文各读背一遍（固定2分钟版本，保持流利度）</li>
+      <li><strong>拼音正音</strong>：看图或读拼音词表3分钟，重点练习"手势法"和"五度标记法"配合</li>
+      <li><strong>成语与词语辨析</strong>：每天积累/复习2个成语教学法 + 一组近义词辨析（语义·语用·搭配三维度）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="save-bar">
+  <span class="sv-status" id="svStatus">检查存储...</span>
+  <button onclick="exportData()">📤 导出数据</button>
+  <button onclick="document.getElementById('importFile').click()">📥 导入数据</button>
+  <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+</div>
+
+<!-- Top progress ring -->
+<div class="ring-wrap">
+  <div class="ring-box">
+    <svg viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="88" fill="none" stroke="#E1F5EE" stroke-width="12"/>
+      <circle cx="100" cy="100" r="68" fill="none" stroke="#EEEDFE" stroke-width="10"/>
+      <circle cx="100" cy="100" r="48" fill="none" stroke="#FAECE7" stroke-width="8"/>
+      <circle id="rp1" cx="100" cy="100" r="88" fill="none" stroke="#0F6E56" stroke-width="12" stroke-dasharray="0 553" stroke-linecap="round"/>
+      <circle id="rp2" cx="100" cy="100" r="88" fill="none" stroke="#534AB7" stroke-width="12" stroke-dasharray="0 553" stroke-linecap="round"/>
+      <circle id="rp3" cx="100" cy="100" r="68" fill="none" stroke="#D85A30" stroke-width="10" stroke-dasharray="0 427" stroke-linecap="round"/>
+      <circle id="rp4" cx="100" cy="100" r="68" fill="none" stroke="#BA7517" stroke-width="10" stroke-dasharray="0 427" stroke-linecap="round"/>
+      <circle id="rall" cx="100" cy="100" r="48" fill="none" stroke="#1D9E75" stroke-width="8" stroke-dasharray="0 302" stroke-linecap="round"/>
+    </svg>
+    <div class="ring-ctr">
+      <div class="num" id="pn">0/20</div>
+      <div class="lbl">已完成</div>
+      <div class="dt">5.23 — 6.11</div>
+    </div>
+  </div>
+</div>
+
+<div class="pleg">
+  <div class="pleg-i gph1"><span class="pleg-d" style="background:var(--p1)"></span>P1 专项·上 Day1-5</div>
+  <div class="pleg-i gph2"><span class="pleg-d" style="background:var(--p2)"></span>P2 专项·下 Day6-10</div>
+  <div class="pleg-i gph3"><span class="pleg-d" style="background:var(--p3)"></span>P3 全真模拟 Day11-15</div>
+  <div class="pleg-i gph4"><span class="pleg-d" style="background:var(--p4)"></span>P4 考前冲刺 Day16-20</div>
+</div>
+
+<!-- ====================== PHASE 1 ====================== -->
+<div class="ph-h gph1">第一阶段·上：专项突破与模板建构 Day 1-5</div>
+<div class="dg">
+
+<!-- Day 1 -->
+<div class="dc" data-day="1" data-phase="1">
+  <div class="dc-h gp1">
+    <span><span class="dn">Day 1</span><span class="dd">5.23 周五</span></span>
+    <span class="pt">词语辨析</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp1">
+    <h4>专项：词语辨析（一）——虚词/副词<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 每日常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍：中/英文各读背一遍（2分钟版本）</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">拼音正音：声调练习——手势法+五度标记法配合</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">成语与词辨：盲人摸象·动作法呈现 + 又vs再辨析</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">攻克虚词/副词类近义词：又vs再、就vs才、常常vs往往</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">从语义、语用、搭配三个维度分析每组差异</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">设计对比展示句（每组至少3组对比句）</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">【词语辨析三步走模板】①语境展示(对比句)→②核心差异提炼(公式化/图表化)→③选词填空/情境操练</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 2 -->
+<div class="dc" data-day="2" data-phase="1">
+  <div class="dc-h gp1">
+    <span><span class="dn">Day 2</span><span class="dd">5.24 周六</span></span>
+    <span class="pt">词语辨析·成语</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp1">
+    <h4>专项：词语辨析（二）与成语教学<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 每日常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍：中/英文各读背一遍</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">拼音正音：轻声与儿化音练习</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">成语与词辨：画蛇添足·动作法 + 主动vs自动辨析</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">攻克实词/成语辨析：满意vs满足、关于vs对于</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">成语的字面义与引申义教学——如何用初级词汇解释高级成语</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">融入沙特本土可理解环境的成语教学设计</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">【成语趣味教学/留白替代模板】——用初级词汇解释高级成语的标准化流程</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 3 -->
+<div class="dc" data-day="3" data-phase="1">
+  <div class="dc-h gp1">
+    <span><span class="dn">Day 3</span><span class="dd">5.25 周日</span></span>
+    <span class="pt">试讲·语法</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp1">
+    <h4>专项：试讲题 · PPP模式与语法呈现<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 每日常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍：中/英文各读背一遍</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">拼音正音：3分钟词表朗读</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">成语与词辨：能vs会辨析 + 成语复习</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">攻克高频语法点：「把」字句、「被」字句、比较句、趋向补语</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">精炼PPP模式：展示(2min)→操练(3min)→运用(2min)</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">实物/情境导入法练习（1分钟导入设计）</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">【语法试讲万能脚本模板】导入(1min)→展示(2min)板书核心公式→操练(3min)机械-交际→考察/总结(1min)</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 4 -->
+<div class="dc" data-day="4" data-phase="1">
+  <div class="dc-h gp1">
+    <span><span class="dn">Day 4</span><span class="dd">5.26 周一</span></span>
+    <span class="pt">试讲·互动</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp1">
+    <h4>专项：试讲题 · 课堂互动与趣味操练<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 每日常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍：中/英文各读背一遍</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">拼音正音：3分钟词表朗读</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">词辨复习 + 试讲（「把」字句脚本梗概速过）</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">研究"以学生为中心"的试讲呈现——如何体现互动而非灌输</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">游戏化教学法实践：滚雪球、大转盘、连点成线（适合沙特大班）</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">试讲中无缝套用互动指令的练习</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">【游戏/活动嵌入式模板】——试讲任何语法/词汇时可无缝套用的互动指令库</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 5 -->
+<div class="dc" data-day="5" data-phase="1">
+  <div class="dc-h gp1">
+    <span><span class="dn">Day 5</span><span class="dd">5.27 周二</span></span>
+    <span class="pt">中文问答</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp1">
+    <h4>专项：中文问答 · 课堂管理与突发处理<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 每日常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍：中/英文各读背一遍</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">拼音正音：3分钟词表朗读</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">词辨（刚vs刚才）+ 试讲复习</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">高频课堂管理真题：学生不配合、混合水平教学、手机依赖、课堂纪律</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">针对低幼/成人不同对象的课堂管理策略</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">突发状况处理：技术故障、学生冲突、文化误解</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">【课堂管理问答万能三段式】表态定位(原则)→分步解决(课上冷处理/分层教学+课后沟通/调整教法)→反思总结(专业发展)</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+</div><!-- P1 end -->
+
+<!-- ====================== PHASE 2 ====================== -->
+<div class="ph-h gph2">第一阶段·下：专项突破与模板建构 Day 6-10</div>
+<div class="dg">
+
+<!-- Day 6 -->
+<div class="dc" data-day="6" data-phase="2">
+  <div class="dc-h gp2">
+    <span><span class="dn">Day 6</span><span class="dd">5.28 周三</span></span>
+    <span class="pt">中文问答·跨文化</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp2">
+    <h4>专项：中文问答 · 跨文化交际与沙特国情<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 每日常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍：中/英文各读背一遍</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">拼音正音：3分钟词表朗读</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">词辨 + 试讲 + 问答（为什么去沙特？模拟回答）</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus p2">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">敏感话题应对：宗教、性别、政治等</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">文化冲突处理：高语境vs低语境差异（霍尔理论）</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">伊斯兰文化常识：斋月、性别社交安全边界、饮食禁忌</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">【跨文化应对金句模板】核心原则：尊重差异、客观呈现、不强加、寻找文化共通点 + 遇到敏感提问如何礼貌绕回教学的语言公式</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 7 -->
+<div class="dc" data-day="7" data-phase="2">
+  <div class="dc-h gp2">
+    <span><span class="dn">Day 7</span><span class="dd">5.29 周四</span></span>
+    <span class="pt">英文问答</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp2">
+    <h4>专项：英文问答 · 个人背景与教学动机<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 每日常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍：中/英文各读背一遍</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">拼音正音：3分钟词表朗读</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">词辨 + 中文问答复习</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus p2">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">Why Saudi Arabia? — 结合双边合作+个人发展+文化交流</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">Tell me about your teaching philosophy — 教学理念英文阐述</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">How do you handle stressful situations? — STAR法则英文版</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">【英文高频金句库与亮点模板】——核心教学经验+沙特中文教育热情→高分英文段落，脱稿流利</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 8 -->
+<div class="dc" data-day="8" data-phase="2">
+  <div class="dc-h gp2">
+    <span><span class="dn">Day 8</span><span class="dd">5.30 周五</span></span>
+    <span class="pt">英文·课堂指令</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp2">
+    <h4>专项：英文问答 · 课堂指令与文化释义<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 每日常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍：中/英文各读背一遍</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">拼音正音：3分钟词表朗读</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">词辨 + 试讲复习</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus p2">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">用纯英文/简易英文解释中国传统文化（剪纸、中国结等）</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">熟练掌握至少30条自然流利的日常课堂管理英语指令</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">Classroom Management English 实战演练</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">【2分钟文化展示英文说辞模板】+【高频讲台英语速查表】（30+条课堂指令）</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 9 -->
+<div class="dc" data-day="9" data-phase="2">
+  <div class="dc-h gp2">
+    <span><span class="dn">Day 9</span><span class="dd">5.31 周六</span></span>
+    <span class="pt">才艺展示</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp2">
+    <h4>专项：才艺展示与中华文化融入<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 每日常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍：中/英文各读背一遍</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">拼音正音：3分钟词表朗读</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">词辨 + 中文/英文问答复习</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus p2">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">精炼1-2项才艺（书法/剪纸/中国结/太极等）</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">重点：如何"教"学生做，而非独自表演——互动式才艺展示</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">线上/线下互动中的才艺融入策略</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">【才艺展示+教学互动中英双语脚本模板】——2分钟内完成展示+互动引导</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 10 -->
+<div class="dc" data-day="10" data-phase="2">
+  <div class="dc-h gp2">
+    <span><span class="dn">Day 10</span><span class="dd">6.1 周日</span></span>
+    <span class="pt">模板总复盘</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp2">
+    <h4>专项：基础英语融入 + 前10天模板总复盘<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h routine">⏱️ 今日特殊常规</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">进行一次小规模无备考全科目串联（自我介绍→说课梗概→试讲片段→中英问答→才艺）</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h focus p2">🎯 今日专项</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">掌握5-10句地道英语开场、问候与赞赏语</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">全面盘点前9天产出的所有模板</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">背诵所有辨析公式、试讲万能词、中文三段式和英文金句</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 模板产出</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">装订【终极面试通关口袋本】——所有模板精华合集，可直接背诵上考场</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+</div><!-- P2 end -->
+
+<!-- ====================== PHASE 3 ====================== -->
+<div class="ph-h gph3">第二阶段·上：全真模拟与深度复盘 Day 11-15</div>
+<div class="dg">
+
+<!-- Day 11 -->
+<div class="dc" data-day="11" data-phase="3">
+  <div class="dc-h gp3">
+    <span><span class="dn">Day 11</span><span class="dd">6.2 周一</span></span>
+    <span class="pt">模拟：教学核心</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp3">
+    <h4>模拟实战一：教学核心板块（硬实力）<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h sim">🎬 模拟内容</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">全真抽题说课（3-5分钟）</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">脱稿试讲（7-10分钟）——重点考查语法/词辨模板在强压下的输出</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h review">🔍 深度复盘</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">观看录像，检查：① 语速是否过快？② 板书是否规范精炼？③ 眼神是否有模拟互动？</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">记录改进点（不少于5条）</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 12 -->
+<div class="dc" data-day="12" data-phase="3">
+  <div class="dc-h gp3">
+    <span><span class="dn">Day 12</span><span class="dd">6.3 周二</span></span>
+    <span class="pt">模拟：中英文问答</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp3">
+    <h4>模拟实战二：中英文问答（软实力）<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h sim">🎬 模拟内容</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">随机抽取3道中文问答（含跨文化）+ 3道英文问答</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">严格限制思考时间（每题不超过15秒准备）</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h review">🔍 深度复盘</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">核对逻辑：有没有熟练套用"三段式"？</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">英文有没有卡顿？关键词有没有说错？</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 13 -->
+<div class="dc" data-day="13" data-phase="3">
+  <div class="dc-h gp3">
+    <span><span class="dn">Day 13</span><span class="dd">6.4 周三</span></span>
+    <span class="pt">模拟：外语+才艺</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp3">
+    <h4>模拟实战三：外语+才艺专项复合<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h sim">🎬 模拟内容</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自我介绍（中英）→ 英文问答 → 才艺展示及互动</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">才艺展示掐表控制在2分钟内</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h review">🔍 深度复盘</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">测试才艺展示的镜头角度、道具摆放流利度</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">确保解说词与手上动作完美同步</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 14 -->
+<div class="dc" data-day="14" data-phase="3">
+  <div class="dc-h gp3">
+    <span><span class="dn">Day 14</span><span class="dd">6.5 周四</span></span>
+    <span class="pt">全流程模拟①</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp3">
+    <h4>全流程通关模拟（一）· 初试啼声<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h sim">🎬 模拟内容</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">第一次全流程严格闭卷模拟（35分钟）</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">流程：中英自我介绍→随机语法试讲→词辨→中英问答→才艺</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h review">🔍 深度复盘</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">写下《全流程问题清单》——针对卡顿、超时或逻辑混乱的地方定向缝补</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 15 -->
+<div class="dc" data-day="15" data-phase="3">
+  <div class="dc-h gp3">
+    <span><span class="dn">Day 15</span><span class="dd">6.6 周五</span></span>
+    <span class="pt">全流程模拟②</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp3">
+    <h4>全流程通关模拟（二）· 压力测试<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h sim">🎬 模拟内容</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">第二次全流程模拟——邀请同行/朋友/家人当"刁钻考官"</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">问答环节提出刁难问题，试讲时模拟"学生捣乱"</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h review">🔍 深度复盘</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">评估心理抗压能力，优化突发状况下的模板变通能力</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+</div><!-- P3 end -->
+
+<!-- ====================== PHASE 4 ====================== -->
+<div class="ph-h gph4">第二阶段·下：考前冲刺与状态调整 Day 16-20</div>
+<div class="dg">
+
+<!-- Day 16 -->
+<div class="dc" data-day="16" data-phase="4">
+  <div class="dc-h gp4">
+    <span><span class="dn">Day 16</span><span class="dd">6.7 周六</span></span>
+    <span class="pt">盲区大扫除</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp4">
+    <h4>盲区大扫除与错题攻坚<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h focus p4">🎯 今日重点</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">根据Day14-15暴露的致命弱点定向攻关（如某类词辨不会讲/某英文话题卡壳）</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">对照前10天模板进行重构和死记硬背</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">中文问答盲区补充：再练5道新题</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 17 -->
+<div class="dc" data-day="17" data-phase="4">
+  <div class="dc-h gp4">
+    <span><span class="dn">Day 17</span><span class="dd">6.8 周日</span></span>
+    <span class="pt">全流程模拟③</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp4">
+    <h4>全流程通关模拟（三）· 完美呈现<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h sim">🎬 模拟内容</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">第三次全流程模拟——穿上正式面试服装，化好妆</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">调试正式考试会用到的一切电子设备、光线和背景</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h review">🔍 深度复盘</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">逐帧检查教态、仪容仪表、微笑频率、阿语问候自然度</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 18 -->
+<div class="dc" data-day="18" data-phase="4">
+  <div class="dc-h gp4">
+    <span><span class="dn">Day 18</span><span class="dd">6.9 周一</span></span>
+    <span class="pt">材料+轻量模拟</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp4">
+    <h4>设备材料检查 + 轻量精细化模拟<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h focus p4">🎯 今日重点</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">梳理最后一遍材料袋（身份证、学位证、普通话证、CTCSOL证等）</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">进行最后一次轻量级、高亮点的全流程过关</span></li>
+      </ul>
+    </div>
+    <div class="sub">
+      <div class="sub-h template">📋 心理建设</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">确立"我是专业国际中文教师"的心理暗示，固化讲台气场</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 19 -->
+<div class="dc" data-day="19" data-phase="4">
+  <div class="dc-h gp4">
+    <span><span class="dn">Day 19</span><span class="dd">6.10 周二</span></span>
+    <span class="pt">闭目过电影</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp4">
+    <h4>模板微调与闭目"过电影"<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h focus p4">🎯 今日重点</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">停止大量做题，防止大脑疲劳</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">在脑海中像放电影一样，把试讲各流派导入、问答万能框架、才艺台词过2-3遍</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">确保作息与考试时间完全同步</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+<!-- Day 20 -->
+<div class="dc" data-day="20" data-phase="4">
+  <div class="dc-h gp4">
+    <span><span class="dn">Day 20</span><span class="dd">6.11 周三</span></span>
+    <span class="pt">静待花开</span>
+    <div class="mini-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="3"/><circle class="mr-fg" cx="18" cy="18" r="15" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="0 94.2" stroke-linecap="round"/></svg><span class="mini-pct">0%</span></div>
+  </div>
+  <div class="dc-b cp4">
+    <h4>保持状态，静待花开 🌸<span class="edit-btn" onclick="toggleEdit(this)">✎</span></h4>
+    <div class="sub">
+      <div class="sub-h focus p4">🎯 今日核心</div>
+      <ul class="tl">
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">早睡早起，保持肌肉和声带的舒适度</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">自信满满，准备迎接6月13-14日的选拔</span></li>
+        <li onclick="toggleTask(this)"><span class="ck"></span><span class="tx" contenteditable="false">沙特中文讲台在等你！深呼吸，自信上场！</span></li>
+      </ul>
+    </div>
+    <button class="add-task" onclick="addTask(this)">+ 添加任务</button>
+  </div>
+  <div class="dc-f"><button class="submit-btn" onclick="submitDay(this)">提交今日答案</button></div>
+</div>
+
+</div><!-- P4 end -->
+
+<!-- ====== 评分标准 ====== -->
+<div class="sec">
+  <h2>每日打卡评分标准</h2>
+  <p style="color:var(--t2);font-size:12px;margin-bottom:12px">参照<strong>语合志愿者/公派教师/沙特中文教师</strong>考核标准评分（总分100）：</p>
+  <table class="tbl">
+    <thead><tr><th style="width:14%">维度</th><th style="width:8%">权重</th><th>评分要点</th><th style="width:7%">满分</th></tr></thead>
+    <tbody>
+      <tr><td><strong>教学能力</strong></td><td style="color:var(--p1);font-weight:700">40%</td><td>专业知识、教学设计、课堂组织、教案完整性、语音语法正确性</td><td>40</td></tr>
+      <tr><td><strong>综合素质</strong></td><td style="color:var(--p2);font-weight:700">30%</td><td>逻辑表达、应变思维、时间把控、心理素质</td><td>30</td></tr>
+      <tr><td><strong>跨文化适应</strong></td><td style="color:var(--p3);font-weight:700">20%</td><td>文化敏感度、沙特文化了解、适应能力、团队协作</td><td>20</td></tr>
+      <tr><td><strong>才艺特长</strong></td><td style="color:var(--p4);font-weight:700">10%</td><td>才艺准备程度、展示创意、教学转化能力</td><td>10</td></tr>
+    </tbody>
+  </table>
+  <table class="tbl">
+    <thead><tr><th>等级</th><th>分数</th><th>评价</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--p1);font-weight:700">优秀</td><td>90-100</td><td>完全达到选拔标准</td></tr>
+      <tr><td style="color:#1D9E75;font-weight:700">良好</td><td>80-89</td><td>基本达标，少量细节需完善</td></tr>
+      <tr><td style="color:var(--p4);font-weight:700">合格</td><td>60-79</td><td>通过但需加强某些板块</td></tr>
+      <tr><td style="color:var(--red);font-weight:700">待提升</td><td>&lt;60</td><td>建议针对性加强后再提交</td></tr>
+    </tbody>
+  </table>
+  <div class="ta">
+    <div class="ta-i"><div class="tl2">自我介绍</div><div class="tv" style="color:var(--p1)">2-3min</div><div class="tw">权重 10%</div></div>
+    <div class="ta-i"><div class="tl2">说课</div><div class="tv" style="color:var(--p2)">3-5min</div><div class="tw">权重 15%</div></div>
+    <div class="ta-i"><div class="tl2">试讲</div><div class="tv" style="color:var(--p3)">7-10min</div><div class="tw">权重 25%</div></div>
+    <div class="ta-i"><div class="tl2">中文问答</div><div class="tv" style="color:var(--p4)">5-7min</div><div class="tw">权重 25%</div></div>
+    <div class="ta-i"><div class="tl2">外语口试</div><div class="tv" style="color:var(--p2)">3-5min</div><div class="tw">权重 15%</div></div>
+    <div class="ta-i"><div class="tl2">才艺展示</div><div class="tv" style="color:var(--p1)">~2min</div><div class="tw">权重 10%</div></div>
+  </div>
+</div>
+
+<!-- ====== 高频面试题 ====== -->
+<div class="sec">
+  <h2>高频面试题目速记</h2>
+  <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">中文教学类<span style="font-size:16px;color:#aaa">-</span></div>
+    <div class="faq-a" style="display:block"><table class="tbl"><thead><tr><th style="width:45%">题目</th><th>关键词/思路</th></tr></thead><tbody>
+      <tr><td>如何教零基础声调？</td><td>手势法+五度标记法+对比练习</td></tr>
+      <tr><td>如何设计拼音课？</td><td>声母→韵母→拼合→声调</td></tr>
+      <tr><td>混合水平班级怎么办？</td><td>分层任务+差异化作业</td></tr>
+      <tr><td>如何教汉字？</td><td>笔画→笔顺→部件→整字</td></tr>
+      <tr><td>学生不发言怎么办？</td><td>降低门槛→pair work→正向激励</td></tr>
+      <tr><td>如何在海外推广中文？</td><td>结合当地文化+数字化+文化活动</td></tr>
+      <tr><td>又vs再/就vs才/常常vs往往？</td><td>语义+语用+搭配三维度辨析</td></tr>
+    </tbody></table></div></div>
+  <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">跨文化交际类<span style="font-size:16px;color:#aaa">+</span></div>
+    <div class="faq-a"><table class="tbl"><thead><tr><th style="width:45%">题目</th><th>答题思路</th></tr></thead><tbody>
+      <tr><td>如何看待刻板印象？</td><td>理解成因→客观展示→文化桥梁</td></tr>
+      <tr><td>敏感话题怎么答？</td><td>尊重差异→客观解释→避免对立</td></tr>
+      <tr><td>为什么选沙特？</td><td>双边合作+个人发展+文化交流</td></tr>
+      <tr><td>如何适应当地文化？</td><td>主动学习→开放心态→入乡随俗</td></tr>
+      <tr><td>遇到文化冲突？</td><td>冷静观察→沟通理解→寻求共识</td></tr>
+      <tr><td>斋月期间教学注意？</td><td>尊重宗教习惯+调整课间+避免饮食示范</td></tr>
+    </tbody></table></div></div>
+  <div class="faq-i"><div class="faq-q" onclick="toggleFaq(this)">职业规划类<span style="font-size:16px;color:#aaa">+</span></div>
+    <div class="faq-a"><table class="tbl"><thead><tr><th style="width:45%">题目</th><th>答题思路</th></tr></thead><tbody>
+      <tr><td>你的优缺点？</td><td>优势+实例；缺点+改进</td></tr>
+      <tr><td>未来规划？</td><td>短期教学→中期研究→长期传播</td></tr>
+      <tr><td>最大挑战？</td><td>STAR法则：情境→任务→行动→结果</td></tr>
+      <tr><td>为什么做中文教师？</td><td>热爱+能力+价值+使命</td></tr>
+    </tbody></table></div></div>
+</div>
+
+<!-- ====== 考前物品清单 ====== -->
+<div class="sec">
+  <h2>🧾 考前必查清单（线上考试）</h2>
+  <ul class="cl-g">
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>身份证 & 准考证信息确认</li>
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>腾讯会议已安装 & 可正常登录</li>
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>双镜头正常（手机+电脑）</li>
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>自我介绍讲稿（中英双语）已背熟</li>
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>手机支架（二机位）已就位</li>
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>网络稳定 & 备用热点就绪</li>
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>中华才艺道具摆放就位</li>
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>背景干净整洁 & 光线充足</li>
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>正装着装 & 仪表检查</li>
+    <li><span class="clb" onclick="toggleChecklist(this)"></span>水杯 & 纸巾放旁边</li>
+  </ul>
+</div>
+
+<div class="ft">
+  <p><strong>每天完成任务后逐项打卡</strong>，提交答案给我评分</p>
+  <p style="margin-top:4px;color:#bbb">V3 · 2026年5月22日 | 前10天全科目魔鬼打卡+专项模板建构 | 后10天全真模拟+深度复盘</p>
+</div>
+
+</div><!-- /.C -->
+
+<script>
+const C = 94.2;
+const R = { p1: 553, p2: 553, p3: 427, p4: 427, all: 302 };
+let storageOk = false;
+
+// === Storage check ===
+(function checkStorage() {
+  try {
+    localStorage.setItem('_test_', '1');
+    localStorage.removeItem('_test_');
+    storageOk = true;
+  } catch(e) {
+    storageOk = false;
+  }
+  const el = document.getElementById('svStatus');
+  if (!el) return;
+  if (storageOk) {
+    el.textContent = '✓ 自动保存已开启';
+    el.className = 'sv-status ok';
+  } else {
+    el.textContent = '⚠ 浏览器不支持自动保存，请用导出功能';
+    el.className = 'sv-status fail';
+  }
+})();
+
+// === Task toggle ===
+function toggleTask(li) {
+  const card = li.closest('.dc');
+  if (card.classList.contains('editing')) return;
+  li.classList.toggle('done');
+  li.querySelector('.ck').textContent = li.classList.contains('done') ? '✓' : '';
+  updateCard(card);
+  updateTopRing();
+  saveAll();
+}
+
+// === Checklist toggle ===
+function toggleChecklist(span) {
+  span.classList.toggle('on');
+  span.textContent = span.classList.contains('on') ? '✓' : '';
+  saveAll();
+}
+
+// === Edit mode ===
+function toggleEdit(btn) {
+  const card = btn.closest('.dc');
+  const isEditing = card.classList.contains('editing');
+  card.classList.toggle('editing');
+  btn.classList.toggle('active');
+  btn.textContent = isEditing ? '✎' : '✓';
+  card.querySelectorAll('.tl li .tx').forEach(tx => {
+    tx.contentEditable = !isEditing;
+  });
+  if (isEditing) saveAll();
+}
+
+// === Add task ===
+function addTask(btn) {
+  const sub = btn.closest('.sub') || btn.parentElement;
+  const ul = sub.querySelector('.tl');
+  if (!ul) return;
+  const li = document.createElement('li');
+  li.setAttribute('onclick', 'toggleTask(this)');
+  li.innerHTML = '<span class="ck"></span><span class="tx" contenteditable="true">新任务...</span>';
+  ul.appendChild(li);
+  li.querySelector('.tx').focus();
+  // Auto-save when user finishes editing the new task
+  li.querySelector('.tx').addEventListener('blur', function() {
+    if (!li.closest('.dc').classList.contains('editing')) return;
+    saveAll();
+  });
+}
+
+// === Submit day ===
+function submitDay(btn) {
+  const card = btn.closest('.dc');
+  const day = card.dataset.day;
+  const phaseTag = card.querySelector('.pt').textContent;
+  alert('请在聊天窗口中发送 Day ' + day + ' 的学习成果（' + phaseTag + '），我会按考核标准为你评分。');
+}
+
+// === Update card mini-ring ===
+function updateCard(card) {
+  const total = card.querySelectorAll('.tl li').length;
+  const done = card.querySelectorAll('.tl li.done').length;
+  const pct = total > 0 ? Math.round(done / total * 100) : 0;
+
+  const fg = card.querySelector('.mr-fg');
+  const pctEl = card.querySelector('.mini-pct');
+  const dash = C * pct / 100;
+  fg.setAttribute('stroke-dasharray', dash + ' ' + C);
+  pctEl.textContent = pct + '%';
+
+  if (pct === 100) {
+    card.classList.add('all-done');
+  } else {
+    card.classList.remove('all-done');
+  }
+}
+
+// === Update top ring ===
+function updateTopRing() {
+  const phases = { 1: [], 2: [], 3: [], 4: [] };
+  document.querySelectorAll('.dc').forEach(card => {
+    const phase = card.dataset.phase;
+    const total = card.querySelectorAll('.tl li').length;
+    const done = card.querySelectorAll('.tl li.done').length;
+    phases[phase].push(total > 0 ? done / total : 0);
+  });
+
+  const avg = p => {
+    const a = phases[p];
+    return a.length ? a.reduce((s, v) => s + v, 0) / a.length : 0;
+  };
+
+  const seg = 553 / 2;
+  const seg2 = 427 / 2;
+
+  const p1Len = seg * avg(1);
+  const p2Len = seg * avg(2);
+  document.getElementById('rp1').setAttribute('stroke-dasharray', p1Len + ' ' + (553 - p1Len));
+  document.getElementById('rp1').setAttribute('stroke-dashoffset', seg * 1.5);
+  document.getElementById('rp2').setAttribute('stroke-dasharray', p2Len + ' ' + (553 - p2Len));
+  document.getElementById('rp2').setAttribute('stroke-dashoffset', seg * 0.5);
+
+  const p3Len = seg2 * avg(3);
+  const p4Len = seg2 * avg(4);
+  document.getElementById('rp3').setAttribute('stroke-dasharray', p3Len + ' ' + (427 - p3Len));
+  document.getElementById('rp3').setAttribute('stroke-dashoffset', seg2 * 1.5);
+  document.getElementById('rp4').setAttribute('stroke-dasharray', p4Len + ' ' + (427 - p4Len));
+  document.getElementById('rp4').setAttribute('stroke-dashoffset', seg2 * 0.5);
+
+  const allCards = document.querySelectorAll('.dc');
+  let allTotal = 0, allDone = 0;
+  allCards.forEach(c => {
+    allTotal += c.querySelectorAll('.tl li').length;
+    allDone += c.querySelectorAll('.tl li.done').length;
+  });
+  const overallPct = allTotal > 0 ? allDone / allTotal : 0;
+  document.getElementById('rall').setAttribute('stroke-dasharray', (302 * overallPct) + ' ' + (302 - 302 * overallPct));
+
+  let daysComplete = 0;
+  allCards.forEach(c => {
+    const t = c.querySelectorAll('.tl li').length;
+    const d = c.querySelectorAll('.tl li.done').length;
+    if (t > 0 && t === d) daysComplete++;
+  });
+  document.getElementById('pn').textContent = daysComplete + '/20';
+
+  const diff = Math.ceil((new Date('2026-06-13') - new Date().setHours(0,0,0,0)) / 864e5);
+  document.getElementById('cd').textContent = Math.max(0, diff);
+}
+
+// === FAQ toggle ===
+function toggleFaq(el) {
+  const a = el.nextElementSibling;
+  const icon = el.querySelector('span');
+  if (a.style.display === 'none' || !a.style.display) {
+    a.style.display = 'block';
+    icon.textContent = '-';
+  } else {
+    a.style.display = 'none';
+    icon.textContent = '+';
+  }
+}
+
+// ========================================
+// === PERSISTENCE - Full state save ===
+// ========================================
+
+function collectAllState() {
+  const state = { tasks: {}, checklist: {} };
+
+  // Save task data per day per sub-section
+  document.querySelectorAll('.dc').forEach(card => {
+    const day = card.dataset.day;
+    state.tasks[day] = [];
+    card.querySelectorAll('.tl').forEach(ul => {
+      const items = [];
+      ul.querySelectorAll('li').forEach(li => {
+        const tx = li.querySelector('.tx');
+        items.push({
+          text: tx ? tx.textContent : '',
+          done: li.classList.contains('done')
+        });
+      });
+      state.tasks[day].push(items);
+    });
+  });
+
+  // Save checklist
+  const clItems = document.querySelectorAll('.cl-g .clb');
+  const clStates = [];
+  clItems.forEach(clb => {
+    clStates.push(clb.classList.contains('on'));
+  });
+  state.checklist = clStates;
+
+  return state;
+}
+
+function saveAll() {
+  const state = collectAllState();
+  const json = JSON.stringify(state);
+  
+  if (storageOk) {
+    try {
+      localStorage.setItem('saudi20day_v3', json);
+      const el = document.getElementById('svStatus');
+      if (el) {
+        el.textContent = '✓ 已保存';
+        el.className = 'sv-status ok';
+        // Reset text after 2s
+        clearTimeout(window._saveTimeout);
+        window._saveTimeout = setTimeout(() => {
+          el.textContent = '✓ 自动保存已开启';
+        }, 2000);
+      }
+      return;
+    } catch(e) {
+      storageOk = false;
+    }
+  }
+  
+  // localStorage failed
+  const el = document.getElementById('svStatus');
+  if (el) {
+    el.textContent = '⚠ 保存失败！请导出数据备份';
+    el.className = 'sv-status fail';
+  }
+}
+
+function loadAll() {
+  if (!storageOk) return;
+  
+  try {
+    const raw = localStorage.getItem('saudi20day_v3');
+    if (!raw) return;
+    const state = JSON.parse(raw);
+
+    // Load tasks
+    document.querySelectorAll('.dc').forEach(card => {
+      const day = card.dataset.day;
+      if (!state.tasks || !state.tasks[day]) return;
+      const dayData = state.tasks[day];
+      const uls = card.querySelectorAll('.tl');
+      uls.forEach((ul, secIdx) => {
+        if (secIdx >= dayData.length) return;
+        const items = dayData[secIdx];
+        const lis = ul.querySelectorAll('li');
+        lis.forEach((li, i) => {
+          if (i >= items.length) return;
+          const t = items[i];
+          li.className = t.done ? 'done' : '';
+          const ck = li.querySelector('.ck');
+          if (ck) ck.textContent = t.done ? '✓' : '';
+          const tx = li.querySelector('.tx');
+          if (tx) tx.textContent = t.text;
+        });
+      });
+    });
+
+    // Load checklist
+    if (state.checklist) {
+      const clItems = document.querySelectorAll('.cl-g .clb');
+      state.checklist.forEach((on, i) => {
+        if (i < clItems.length) {
+          if (on) {
+            clItems[i].classList.add('on');
+            clItems[i].textContent = '✓';
+          } else {
+            clItems[i].classList.remove('on');
+            clItems[i].textContent = '';
+          }
+        }
+      });
+    }
+
+    // Update all UI
+    document.querySelectorAll('.dc').forEach(updateCard);
+    updateTopRing();
+
+  } catch(e) {
+    console.warn('加载数据失败:', e);
+  }
+}
+
+// === Export / Import ===
+function exportData() {
+  const state = collectAllState();
+  const json = JSON.stringify(state, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'saudi20day_backup_' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  
+  const el = document.getElementById('svStatus');
+  if (el) {
+    el.textContent = '✓ 数据已导出';
+    el.className = 'sv-status ok';
+    setTimeout(() => { el.textContent = storageOk ? '✓ 自动保存已开启' : '⚠ 浏览器不支持自动保存，请用导出功能'; }, 2000);
+  }
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const state = JSON.parse(e.target.result);
+      if (!state.tasks) throw new Error('无效的数据格式');
+      
+      // Save to localStorage
+      if (storageOk) {
+        localStorage.setItem('saudi20day_v3', JSON.stringify(state));
+      }
+      
+      // Reload
+      loadAll();
+      
+      const el = document.getElementById('svStatus');
+      if (el) {
+        el.textContent = '✓ 数据已导入';
+        el.className = 'sv-status ok';
+        setTimeout(() => { el.textContent = '✓ 自动保存已开启'; }, 2000);
+      }
+    } catch(err) {
+      alert('导入失败：文件格式不正确。' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  // Reset input so same file can be re-imported
+  event.target.value = '';
+}
+
+// === Auto-save on text edit (contenteditable blur) ===
+document.addEventListener('blur', function(e) {
+  if (e.target.classList && e.target.classList.contains('tx') && e.target.contentEditable === 'true') {
+    // Small delay to let the click event finish
+    setTimeout(saveAll, 100);
+  }
+}, true);
+
+// === Init ===
+// Clear old version data
+if (storageOk && localStorage.getItem('saudi20day') && !localStorage.getItem('saudi20day_v3')) {
+  localStorage.removeItem('saudi20day');
+}
+loadAll();
+updateTopRing();
+</script>
+</body>
+</html>
